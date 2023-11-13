@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Models\Extras;
+
+class TipoRol
+{
+    const ADMINISTRADOR = 'ADMINISTRADOR';
+    const NORMAL = 'NORMAL';
+    const MIEMBRO_NORMAL = 'MIEMBRO_NORMAL';
+    const MIEMBRO_ADMINISTRADOR = 'MIEMBRO_ADMINISTRADOR';
+    const ENTIDAD_PRESTADORA = 'ENTIDAD_PRESTADORA';
+    const ORGANISMO_DE_CONTROL = 'ORGANISMO_DE_CONTROL';
+}

@@ -2,12 +2,9 @@
 
 namespace App\Models\Repositories;
 
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
-use Illuminate\Support\Facades\DB;
 
-class ExampleRepository extends EntityRepository
+class RepositorioRol
 {
     private $entityManager;
 
@@ -26,8 +23,7 @@ class ExampleRepository extends EntityRepository
     public function estaLlegando() : string
     {
         try {
-
-            return "Conexión a la base de datos exitosa.". $this->entityManager()->find("App\Models\Entities\Rol", 1);
+            return "Conexión a la base de datos exitosa.". $this->entityManager()->find("App\Models\Entities\Usuario_Plataforma", 1)->getNombre();
         } catch (\Exception $e) {
             return "Error al conectar a la base de datos: " . $e->getMessage();
         }

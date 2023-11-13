@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/custom', [\App\Http\Controllers\ExampleController::class, 'customWelcome']);
+
+Route::get('/incidentes/mis_incidentes/{id}', [\App\Http\Controllers\IncidenteController::class, 'show']);
