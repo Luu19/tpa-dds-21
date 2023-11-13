@@ -23,21 +23,10 @@ class Establecimiento
     private $nombre;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Direccion", cascade={"persist", "merge"})
-     * @ORM\JoinColumn(name="ubicacion_id", referencedColumnName="id")
-     */
-    private $ubicacion;
-
-    /**
      * @ORM\OneToMany(targetEntity="Prestacion_Servicio", mappedBy="establecimiento", cascade={"persist", "merge", "remove"})
      */
     private $prestacionServicios;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="TipoEstablecimiento")
-     * @ORM\JoinColumn(name="tipoEstablecimiento_id", referencedColumnName="id")
-     */
-    private $tipoEstablecimiento;
 
     public function __construct()
     {

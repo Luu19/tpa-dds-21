@@ -28,11 +28,18 @@ class FechaDeCierreComunidad
     private $fechaCierre;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Incidente")
+     * @ORM\ManyToOne(targetEntity="Incidente", fetch="EAGER")
      * @ORM\JoinColumn(name="incidente_id", referencedColumnName="id")
      * @var Incidente
      */
     private $incidente;
+
+    public function __construct($comunidad, $incidente)
+    {
+        $this->comunidad = $comunidad;
+        $this->fechaCierre = null;
+        $this->incidente = $incidente;
+    }
 
     /**
      * @return mixed
@@ -98,12 +105,6 @@ class FechaDeCierreComunidad
         $this->incidente = $incidente;
     }
 
-    public function __construct($comunidad, $incidente)
-    {
-        $this->comunidad = $comunidad;
-        $this->fechaCierre = null;
-        $this->incidente = $incidente;
-    }
 
     public function resuelto()
     {

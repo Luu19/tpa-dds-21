@@ -29,6 +29,6 @@ class ExampleController
     {
         $c = $this->usuario->buscarComunidades(1);
         $a = $this->f->buscarIncidentesComunidades($c, 2);
-        return dd($a[0]);
+        return dd($a[0]->getIncidente());
     }
 }
