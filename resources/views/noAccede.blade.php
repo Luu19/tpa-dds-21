@@ -64,58 +64,48 @@
                         <svg class="bi me-2" width="40" height="32" role="img"><use xlink:href="#logo"/></svg>
                         <h3 class="fw-bold text-body-emphasis ">M.E.S.T.P.E</h3>
                     </a>
-                    <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-                        <li>
-                            <form action="#">
-                                <button type="submit" class="nav-link text-white btn btn-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-fill bi text-primary d-block mx-auto mb-1" viewBox="0 0 16 16">
-                                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
-                                        <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
-                                    </svg>
-                                    Inicio
-                                </button>
-                            </form>
-                        </li>
-                        <li>
-                            <form action="#">
-                                <button type="submit" class="nav-link text-white btn btn-primary">
-                                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                                    Cuenta: {{ htmlspecialchars($usuario->getNombre()) }}
-                                </button>
-                            </form>
-                        </li>
+                    @if($usuario)
+                        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                            <li>
+                                <form action="#">
+                                    <button type="submit" class="nav-link text-white btn btn-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-fill bi text-primary d-block mx-auto mb-1" viewBox="0 0 16 16">
+                                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+                                            <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+                                        </svg>
+                                        Inicio
+                                    </button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="#">
+                                    <button type="submit" class="nav-link text-white btn btn-primary">
+                                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
+                                        Cuenta: {{ htmlspecialchars($usuario->getNombre()) }}
+                                    </button>
+                                </form>
+                            </li>
 
-                        <li>
-                            <form action="#">
-                                <button type="submit" class="nav-link text-white btn btn-primary">
-                                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#close"/></svg> Cerrar Sesión
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
+                            <li>
+                                <form action="#">
+                                    <button type="submit" class="nav-link text-white btn btn-primary">
+                                        <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#close"/></svg> Cerrar Sesión
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    @endif
                 </div>
             </div>
         </div>
     </header>
+
     <div class="container px-4 py-5">
-        <h2 class="pb-2 border-bottom">Listado de Incidentes</h2>
         <div class="list-incident-box p-4">
             <ul class="list-group" id="incidentList">
-                @foreach($incidentes as $incidente)
-                    <li class="list-group-item">
-                        <h5 class="mb-1">Incidente: {{ htmlspecialchars($incidente->getIncidente()->getObservaciones()) }}</h5>
-                        <p class="mb-1">Establecimiento: {{ htmlspecialchars($incidente->getIncidente()->getPrestacion()->getEstablecimiento()->getNombre()) }}</p>
-                        <p class="mb-1">Prestación de Servicio: {{ htmlspecialchars($incidente->getIncidente()->getPrestacion()->getDescripcion()) }}</p>
-                        <p class="mb-1">Comunidad: {{ htmlspecialchars($incidente->getComunidad()->getDescripcion()) }}</p>
-                        <p class="mb-1">Fecha de Apertura: {{ htmlspecialchars($incidente->getIncidente()->getFechaApertura()->format('d-m-Y')) }}</p>
-                        @if($incidente->resuelto())
-                            <p class="mb-1">Fecha de Cierre: {{ htmlspecialchars($incidente->getFechaCierre()->format('d-m-Y')) }}</p>
-                            <button class="btn btn-success">Resuelto</button>
-                        @else
-                            <button class="btn btn-danger">No Resuelto</button>
-                        @endif
-                    </li>
-                @endforeach
+                <div>
+                    <img src="{{ asset('img/401.jpg') }}" alt="image_401">
+                </div>
             </ul>
         </div>
     </div>

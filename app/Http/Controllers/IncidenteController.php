@@ -61,9 +61,10 @@ class IncidenteController extends Controller
     {
         $usuarioLogueado   = $this->repositorioDeUsuario->findById($id);
 
-        //Esto se lo podría delegar a un Middleware pero por ahora lo dejo así
         $rolesPermitidos = [TipoRol::ADMINISTRADOR, TipoRol::NORMAL];
         if($usuarioLogueado == null ||  !in_array($usuarioLogueado->getRol()->getTipo(), $rolesPermitidos)) {
+            //Aca se puede mejorar agregando un servicio de errores
+            return view('noAccede', ["usuario" => $usuarioLogueado]);
         };
 
         $comunidades = $this->repositorioDeUsuario->buscarComunidades($id);
