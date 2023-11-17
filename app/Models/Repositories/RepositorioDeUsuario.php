@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\Repositories;
+use App\Models\Entities\Usuario_Plataforma;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
@@ -32,6 +33,16 @@ class RepositorioDeUsuario extends EntityRepository
         $query->setParameter('id', $id);
 
         return $query->getResult();
+    }
+
+    public function findById($id)
+    {
+        $usuario = $this->entityManager()->find(Usuario_Plataforma::class, $id);
+        if($usuario->getEstado() == 'A') {
+            return $usuario;
+        }else {
+            throw new \Exception("El usuario está inactivo");
+        }
     }
 
 }

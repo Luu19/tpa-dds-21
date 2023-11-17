@@ -27,6 +27,48 @@ class Establecimiento
      */
     private $prestacionServicios;
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre): void
+    {
+        $this->nombre = $nombre;
+    }
+
+    public function getPrestacionServicios(): ArrayCollection
+    {
+        return $this->prestacionServicios;
+    }
+
+    public function setPrestacionServicios(ArrayCollection $prestacionServicios): void
+    {
+        $this->prestacionServicios = $prestacionServicios;
+    }
+
 
     public function __construct()
     {

@@ -59,20 +59,17 @@ class IncidenteController extends Controller
      */
     public function show($id)
     {
-        $usuarioLogueado   = $this->repositorioDeUsuario->find($id);
+        $usuarioLogueado   = $this->repositorioDeUsuario->findById($id);
 
         //Esto se lo podría delegar a un Middleware pero por ahora lo dejo así
         $rolesPermitidos = [TipoRol::ADMINISTRADOR, TipoRol::NORMAL];
         if($usuarioLogueado == null ||  !in_array($usuarioLogueado->getRol()->getTipo(), $rolesPermitidos)) {
-            throw new AccessDeniedException();
         };
 
         $comunidades = $this->repositorioDeUsuario->buscarComunidades($id);
         //List<FechaDeCierreComunidad> incidentes = comunidades.stream().flatMap(comunidad -> repositorioDeFechaDeCierreComunidad.buscarLosDeComunidad(comunidad,10).stream()).collect(Collectors.toList());
         $incidentes = $this->repositorioDeFechaDeCierreComunidad->buscarIncidentesComunidades($comunidades, 10); //Tengo que por cada comunidad buscar los 10 ultimos fechacierrecomunidad
-        return view('listado_incidentes', [ "incidentes" => $incidentes, "usuario_logueado" => $usuarioLogueado]);
-
-        //return "llega";
+        return view('base', [ "incidentes" => $incidentes, "usuario" => $usuarioLogueado]);
     }
 
     /**

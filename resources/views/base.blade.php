@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    @yield('css')
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -81,7 +80,7 @@
                             <form method="GET" action="#">
                                 <button type="submit" class="nav-link text-white btn btn-primary">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                                    @yield('usuario_perfil')
+                                    Cuenta: {{ htmlspecialchars($usuario->getNombre()) }}
                                 </button>
                             </form>
                         </li>
@@ -98,7 +97,28 @@
             </div>
         </div>
     </header>
-    @yield('contenido')
+    <div class="container px-4 py-5">
+        <h2 class="pb-2 border-bottom">Listado de Incidentes</h2>
+        <div class="list-incident-box p-4">
+            <ul class="list-group" id="incidentList">
+                @foreach($incidentes as $incidente)
+                    <li class="list-group-item">
+                        <h5 class="mb-1">Incidente: {{ htmlspecialchars($incidente->getIncidente()->getObservaciones()) }}</h5>
+                        <p class="mb-1">Establecimiento: {{ htmlspecialchars($incidente->getIncidente()->getPrestacion()->getEstablecimiento()->getNombre()) }}</p>
+                        <p class="mb-1">Prestación de Servicio: {{ htmlspecialchars($incidente->getIncidente()->getPrestacion()->getDescripcion()) }}</p>
+                        <p class="mb-1">Comunidad: {{ htmlspecialchars($incidente->getComunidad()->getDescripcion()) }}</p>
+                        <p class="mb-1">Fecha de Apertura: {{ htmlspecialchars($incidente->getIncidente()->getFechaApertura()->format('Y-m-d')) }}</p>
+                        @if($incidente->resuelto())
+                            <p class="mb-1">Fecha de Cierre: {{ htmlspecialchars($incidente->getFechaCierre()->format('Y-m-d')) }}</p>
+                            <button class="btn btn-success">Resuelto</button>
+                        @else
+                            <button class="btn btn-danger">No Resuelto</button>
+                        @endif
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
 </main>
 
 <!-- JavaScript Bundle with Popper -->
