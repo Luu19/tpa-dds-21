@@ -17,18 +17,13 @@ class ExampleController
 
     private $f;
 
-    public function __construct(ExampleRepository $exampleRepository, RepositorioRol $rol, RepositorioDeUsuario $usuario, RepositorioFechaDeCierreComunidad $f)
+    public function __construct(ExampleRepository $exampleRepository)
     {
         $this->exampleRepo = $exampleRepository;
-        $this->rol = $rol;
-        $this->usuario = $usuario;
-        $this->f = $f;
     }
 
     public function customWelcome(Request $request)
     {
-        $c = $this->usuario->buscarComunidades(1);
-        $a = $this->f->buscarIncidentesComunidades($c, 2);
-        return dd($a[0]->getIncidente());
+        return "¡Funcionando ". $this->exampleRepo->index() ."!";
     }
 }

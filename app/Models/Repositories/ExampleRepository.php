@@ -23,13 +23,8 @@ class ExampleRepository extends EntityRepository
         return $this->entityManager;
     }
 
-    public function estaLlegando() : string
+    public function index() : string
     {
-        try {
-
-            return "Conexión a la base de datos exitosa.". $this->entityManager()->find("App\Models\Entities\Rol", 1);
-        } catch (\Exception $e) {
-            return "Error al conectar a la base de datos: " . $e->getMessage();
-        }
+        return "Proyecto Laravel";
     }
 }
