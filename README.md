@@ -4,7 +4,7 @@
 - Lara Nuñez
 - Nicolas Gonzalez
 - Lucia Idañez
-Co - Autores:
+## Co - Autores:
 - Ezequiel Escobar
 - Pablo Pentreath
 ## Pasos Previos
