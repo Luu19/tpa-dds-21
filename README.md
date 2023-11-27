@@ -4,7 +4,9 @@
 - Lara Nuñez
 - Nicolas Gonzalez
 - Lucia Idañez
-
+Co - Autores:
+- Ezequiel Escobar
+- Pablo Pentreath
 ## Pasos Previos
 
 1. Instalar XAMP (versión recomendada -> [XAMP 7.4.19](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.19/))
