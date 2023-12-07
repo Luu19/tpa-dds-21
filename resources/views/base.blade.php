@@ -20,7 +20,7 @@
     <symbol id="open" viewBox="0 0 16 16">
         <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
     </symbol>
-    <symbol id="close" viewBox="0 0 16 16">
+    <symbol id="close" viewBox="0 0 16 16" fill="white">
         <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
     </symbol>
     <symbol id="incident" viewBox="0 0 16 16">
@@ -68,7 +68,7 @@
                         <li>
                             <form action="#">
                                 <button type="submit" class="nav-link text-white btn btn-primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-fill bi text-primary d-block mx-auto mb-1" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-house-fill bi text-primary d-block mx-auto mb-1" viewBox="0 0 16 16">
                                         <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
                                         <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
                                     </svg>
@@ -108,8 +108,8 @@
                         <p class="mb-1">Prestación de Servicio: {{ htmlspecialchars($incidente->getIncidente()->getPrestacion()->getDescripcion()) }}</p>
                         <p class="mb-1">Comunidad: {{ htmlspecialchars($incidente->getComunidad()->getDescripcion()) }}</p>
                         <p class="mb-1">Fecha de Apertura: {{ htmlspecialchars($incidente->getIncidente()->getFechaApertura()->format('d-m-Y')) }}</p>
-                        @if($incidente->resuelto())
-                            <p class="mb-1">Fecha de Cierre: {{ htmlspecialchars($incidente->getFechaCierre()->format('d-m-Y')) }}</p>
+                        @if($incidente->getIncidente()->getResuelto())
+                            <p class="mb-1">Fecha de Cierre: {{ htmlspecialchars($incidente->getIncidente()->getFechaCierreGeneral()->format('d-m-Y')) }}</p>
                             <button class="btn btn-success">Resuelto</button>
                         @else
                             <button class="btn btn-danger">No Resuelto</button>
